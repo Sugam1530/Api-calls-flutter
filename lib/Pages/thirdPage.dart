@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get_api_recyclerview/Pages/firstpage.dart';
+import 'package:get_api_recyclerview/Pages/loginPage.dart';
+import 'package:get_api_recyclerview/Pages/secondPage.dart';
 
 void main() => runApp(thirdPage());
 
@@ -58,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
         pageChanged(index);
       },
       children: <Widget>[
-        Red(),
-        Blue(),
-        Yellow(),
+        firstPage(),
+        secondPage(),
+        loginPage()
       ],
     );
   }
