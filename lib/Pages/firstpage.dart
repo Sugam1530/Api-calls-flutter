@@ -19,7 +19,7 @@ class _firstPageState extends State<firstPage> {
   List<AlbumGet> albumList = [];
   
   Future<List<AlbumGet>> getPostApi() async{
-    final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+    final response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/photos"));
     var data = jsonDecode(response.body.toString());
 
     if(response.statusCode == 200){
@@ -68,7 +68,7 @@ class _firstPageState extends State<firstPage> {
                           child: Column(
                             children: [
                               CircleAvatar(
-                                backgroundImage: NetworkImage( albumList[index].thumbnailUrl.toString()),
+                                backgroundImage: NetworkImage( albumList[index].url.toString()),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
