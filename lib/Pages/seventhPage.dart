@@ -16,14 +16,14 @@ class seventhPage extends StatefulWidget {
 class _seventhPageState extends State<seventhPage> {
 
   List<Entries> entriesList = [];
-  List<int> count = [];
+  int? count;
   
 
   Future getCatApi() async{
     final response = await http.get(Uri.parse("https://api.publicapis.org/entries"));
     Map<String, dynamic> map = jsonDecode(response.body.toString());
     List<dynamic> data = map["entries"];
-    count.add(map["count"]);
+    count = (map["count"]);
 
 
     if(response.statusCode == 200){
@@ -62,7 +62,7 @@ class _seventhPageState extends State<seventhPage> {
               } else{ return
                 Column(
                   children: [
-                    Text(count[0].toString()),
+                    Text(count.toString()),
                     ListView.builder(
                       scrollDirection: Axis.vertical,
                       shrinkWrap: true,
@@ -72,7 +72,8 @@ class _seventhPageState extends State<seventhPage> {
                           child: Column(
                             children: [
                               Text(entriesList[index].description.toString()),
-                              Text(entriesList[index].category.toString()), 
+                              Text(entriesList[index].category.toString()),
+                              Text(entriesList[index].link.toString()) 
                               // Text(count[0].toString())
                             ],
                           ),
