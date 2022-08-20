@@ -60,27 +60,31 @@ class _seventhPageState extends State<seventhPage> {
               if(!snapshot.hasData){
                 return Center(child: const CircularProgressIndicator());
               } else{ return
-                Column(
-                  children: [
-                    Text(count.toString()),
-                    ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: entriesList.length,
-                      itemBuilder: (context, index){
-                        return Card(
-                          child: Column(
-                            children: [
-                              Text(entriesList[index].description.toString()),
-                              Text(entriesList[index].category.toString()),
-                              Text(entriesList[index].link.toString()) 
-                              // Text(count[0].toString())
-                            ],
-                          ),
-                        );
-                      }
-                    )
-                  ],
+                Center(
+                  child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Text(count.toString()),
+                      ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: entriesList.length,
+                        itemBuilder: (context, index){
+                          return Card(
+                            child: Column(
+                              children: [
+                                Text(entriesList[index].description.toString()),
+                                Text(entriesList[index].category.toString()),
+                                Text(entriesList[index].link.toString()) 
+                                // Text(count[0].toString())
+                              ],
+                            ),
+                          );
+                        }
+                      )
+                    ],
+                  ),
+                  ),
                 );
               }
             }
